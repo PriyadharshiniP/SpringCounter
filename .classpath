@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/java"/>
+	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/spring-core-4.3.10.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/spring-web-4.3.10.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/spring-webmvc-4.3.10.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/spring-context-4.3.10.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/apache-tomcat-7.0.81-windows-x64/apache-tomcat-7.0.81/lib/tomcat-coyote.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/apache-tomcat-7.0.81-windows-x64/apache-tomcat-7.0.81/lib/servlet-api.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
