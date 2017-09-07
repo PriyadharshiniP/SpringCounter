@@ -104,13 +104,13 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>SpringCounter</warName>
+						<warName>SpringServices</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 
-		<finalName>SpringCounter</finalName>
+		<finalName>SpringServices</finalName>
 	</build>
 </project>

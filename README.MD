@@ -53,25 +53,23 @@ https://curl.haxx.se/download.html
 Task 1:
 Run the following:
 
-curl http://localhost:8080/SpringCounter-1.0-SNAPSHOT/counter-api/search -H"Authorization: Basic dXNlcjpwYXNzd29yZA==" - d"{\"searchText\":[\"Duis\", \"Sed\", \"Donec\", \"Augue\", \"Pellentesque\", \"123\"]}"  -H "Content-Type:application/json" –X POST
+curl -v  -H "Authorization:Basic dXNlcjpwYXNzd29yZA==" -d "{\"searchText\":[\"Duis\", \"Sed\", \"Donec\", \"Augue\", \"Pellentesque\", \"123\"]}" http://localhost:8080/SpringServices/counter-api/search  -H "Content-Type:application/json" -X POST
 
-The result is:
 Note: Unnecessary use of -X or --request, POST is already inferred.
 *   Trying ::1...
 * TCP_NODELAY set
-* connect to ::1 port 8080 failed: Connection refused
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
 * Connected to localhost (127.0.0.1) port 8080 (#0)
-> POST /SpringCounter/counter-api/search HTTP/1.1
+> POST /SpringServices/counter-api/search HTTP/1.1
 > Host: localhost:8080
 > User-Agent: curl/7.55.1
 > Accept: */*
 > Authorization:Basic dXNlcjpwYXNzd29yZA==
 > Content-Type:application/json
-> Content-Length: 70
+> Content-Length: 71
 >
-* upload completely sent off: 70 out of 70 bytes
+* upload completely sent off: 71 out of 71 bytes
 < HTTP/1.1 200 OK
 < Server: Apache-Coyote/1.1
 < Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -80,30 +78,28 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 < X-XSS-Protection: 1; mode=block
 < X-Frame-Options: DENY
 < X-Content-Type-Options: nosniff
-< Set-Cookie: JSESSIONID=9B3097537F5A4812A43ACD0DA213577C; Path=/SpringCounter; HttpOnly
-< Content-Type: application/json;charset=UTF-8
-< Transfer-Encoding: chunked
-< Date: Thu, 07 Sep 2017 07:37:44 GMT
+< Set-Cookie: JSESSIONID=5958D64987EBA898590D927CDF7306D7; Path=/SpringServices; HttpOnly
+< Content-Type: text/plain;charset=ISO-8859-1
+< Content-Length: 88
+< Date: Thu, 07 Sep 2017 21:32:03 GMT
 <
-{"searchText":[{"Duis":11},{"Sed":16},{"Done":0},{"Augue":7},{"Pellentesque":6},{"123":0}]}* Connection #0 to host localhost left intact
+{"counts":[{"Duis":11},{"Sed":16},{"Donec":8},{"Augue":7},{"Pellentesque":6},{"123":0}]}* Connection #0 to host localhost left intact
 
 Task 2:
 Run the following:
 
-curl http://localhost:8080/SpringCounter/top/5 -H "Authorization: Basic  dXNlcjpwYXNzd29yZA==" -H "Accept: text/csv"
+curl -v http://localhost:8080/SpringServices/top/5 -H "Authorization: Basic  dXNlcjpwYXNzd29yZA==" -H "Accept:text/csv"
 
-The result is :
 *   Trying ::1...
 * TCP_NODELAY set
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
 * Connected to localhost (127.0.0.1) port 8080 (#0)
-> GET /SpringCounter/top/5 HTTP/1.1
+> GET /SpringServices/top/5 HTTP/1.1
 > Host: localhost:8080
 > User-Agent: curl/7.55.1
-> Accept: */*
 > Authorization: Basic  dXNlcjpwYXNzd29yZA==
-> Accept-CharSet:text/csv
+> Accept:text/csv
 >
 < HTTP/1.1 200 OK
 < Server: Apache-Coyote/1.1
@@ -113,12 +109,18 @@ The result is :
 < X-XSS-Protection: 1; mode=block
 < X-Frame-Options: DENY
 < X-Content-Type-Options: nosniff
-< Set-Cookie: JSESSIONID=0C54D8BA9C9F86668ADE9988C061327C; Path=/SpringCounter; HttpOnly
-< Content-Type: application/json;charset=UTF-8
-< Transfer-Encoding: chunked
-< Date: Thu, 07 Sep 2017 06:35:20 GMT
+< Set-Cookie: JSESSIONID=5F1FDED6B18C3FE1B07F58256AB1DD4B; Path=/SpringServices; HttpOnly
+< Content-Type: text/csv;charset=ISO-8859-1
+< Content-Length: 34
+< Date: Thu, 07 Sep 2017 22:19:52 GMT
 <
-{"searchText":["eget,17","\n","vel,17","\n","sed,16","\n","in,15","\n","et,14","\n"]}* Connection #0 to host localhost left intact
+eget|17
+vel|17
+sed|16
+in|15
+et|14
+* Connection #0 to host localhost left intact
+
 
 ## Built With
 

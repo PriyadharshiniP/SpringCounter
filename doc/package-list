@@ -1,4 +1,4 @@
 com.intelliment
-com.intelliment.beans
 com.intelliment.controller
+com.intelliment.model
 com.intelliment.utils

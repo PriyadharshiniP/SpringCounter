@@ -1,27 +1,21 @@
 <b:beans xmlns="http://www.springframework.org/schema/security"
-		 xmlns:b="http://www.springframework.org/schema/beans"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<!-- <http />
 
-	<user-service>
-		<user name="user" password="password" authorities="ROLE_USER" />
-	</user-service>
- -->
- <http auto-config="true">
-<access-denied-handler error-page="/403" />
-<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER')" />
- <csrf disabled="true" />
-  </http>
+	<http auto-config="true">
+		<access-denied-handler error-page="/403" />
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER')" />
+		<csrf disabled="true" />
+	</http>
 
-  <authentication-manager>
-<authentication-provider>
-  <user-service>
-	<user name="user" password="password" authorities="ROLE_USER" />
-	<user name="optus" password="candidates" authorities="('ROLE_USER', 'ROLE_ADMIN')" />
-  </user-service>
-</authentication-provider>
-  </authentication-manager>
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="user" password="password" authorities="ROLE_USER" />
+				<user name="optus" password="candidates" authorities="('ROLE_USER', 'ROLE_ADMIN')" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
 </b:beans>

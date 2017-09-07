@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intelliment.model.CounterResult;
 import com.intelliment.model.SearchText;
-import com.intelliment.utils.CSVUtils;
 import com.intelliment.utils.WordCountUtils;
 
 /**
@@ -58,7 +57,6 @@ public class CounterController {
 	@RequestMapping(value = "/counter-api/search", method = RequestMethod.POST)
 	public String search(@RequestBody SearchText search) {
 
-		//SearchText resultText = new SearchText();
 		Map<String, Integer> frequencyMap = WordCountUtils.getFrequencyMap(getClass().getClassLoader());
 		ArrayList<HashMap> resultList = new ArrayList<HashMap>();
 		
@@ -71,9 +69,8 @@ public class CounterController {
 			resultList.add(hm);
 		}
 		CounterResult countRes = new CounterResult();
-		
 		countRes.setCounts(resultList);
-		//resultText.setSearchText(resultList);
+		//Converting the Object to JSON output
 		String resultStr = "";
 		try{
 		ObjectMapper mapper = new ObjectMapper();
@@ -101,7 +98,7 @@ public class CounterController {
 		frequencyMap.entrySet().stream().sorted(Map.Entry.<String, Integer> comparingByValue().reversed())
 				.forEachOrdered(
 						x -> sortedFrequencyMap.put(x.getKey(), x.getValue()));
-		ArrayList<String> resultList = new ArrayList<String>();
+		
 		int i = 0;
 		Set set = sortedFrequencyMap.entrySet();
 		Iterator it = set.iterator();
@@ -109,8 +106,7 @@ public class CounterController {
 		while (it.hasNext()) {
 			if (i++ < topVal) {
 				Map.Entry me = (Map.Entry) it.next();
-				resultList.add(me.getKey() + "|" + me.getValue());
-				resultList.add("\n");
+				//Converting object to CSV output
 				sb.append(me.getKey() + "|" + me.getValue());
 				sb.append("\n");
 			
@@ -118,10 +114,6 @@ public class CounterController {
 				break;
 		}
 		
-		
-		SearchText resultSearchText = new SearchText();
-		resultSearchText.setSearchText(resultList);
-		//return resultSearchText;
 		return sb.toString();
 	}
 }

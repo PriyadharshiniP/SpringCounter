@@ -1,6 +1,6 @@
 
 /**
- * Provides the classes necessary to Get Frequency of Words in a File and the methods necessary for printing the output in a CSV Format. 
+ * Provides the classes necessary to Get Frequency of Words in a File 
  * 
  *
  * @since 1.0
