@@ -2,7 +2,6 @@ package com.intelliment.controller;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,8 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.intelliment.model.CounterResult;
 import com.intelliment.model.SearchText;
 import com.intelliment.utils.CSVUtils;
 import com.intelliment.utils.WordCountUtils;
@@ -51,12 +53,12 @@ public class CounterController {
 	 * 
 	 * 
 	 * @param search
-	 * @return SearchText
+	 * @return String
 	 */
 	@RequestMapping(value = "/counter-api/search", method = RequestMethod.POST)
-	public SearchText search(@RequestBody SearchText search) {
+	public String search(@RequestBody SearchText search) {
 
-		SearchText resultText = new SearchText();
+		//SearchText resultText = new SearchText();
 		Map<String, Integer> frequencyMap = WordCountUtils.getFrequencyMap(getClass().getClassLoader());
 		ArrayList<HashMap> resultList = new ArrayList<HashMap>();
 		
@@ -68,9 +70,19 @@ public class CounterController {
 			hm.put(word, matchedWord);
 			resultList.add(hm);
 		}
+		CounterResult countRes = new CounterResult();
 		
-		resultText.setSearchText(resultList);
-		return resultText;
+		countRes.setCounts(resultList);
+		//resultText.setSearchText(resultList);
+		String resultStr = "";
+		try{
+		ObjectMapper mapper = new ObjectMapper();
+		resultStr = mapper.writeValueAsString(countRes);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return resultStr;
 
 	}
 	/**
@@ -81,7 +93,8 @@ public class CounterController {
 	 * @return SearchText 
 	 */
 	@RequestMapping(value = "/top/{topVal}", method = RequestMethod.GET)
-	public SearchText topSearch(@PathVariable int topVal) {
+	@ResponseBody
+	public String topSearch(@PathVariable int topVal) {
 		Map<String, Integer> frequencyMap = WordCountUtils.getFrequencyMap(getClass().getClassLoader());
 
 		Map<String, Integer> sortedFrequencyMap = new LinkedHashMap<>();
@@ -92,30 +105,23 @@ public class CounterController {
 		int i = 0;
 		Set set = sortedFrequencyMap.entrySet();
 		Iterator it = set.iterator();
-
+		StringBuilder sb = new StringBuilder();
 		while (it.hasNext()) {
 			if (i++ < topVal) {
 				Map.Entry me = (Map.Entry) it.next();
 				resultList.add(me.getKey() + "|" + me.getValue());
 				resultList.add("\n");
-
+				sb.append(me.getKey() + "|" + me.getValue());
+				sb.append("\n");
+			
 			} else
 				break;
 		}
 		
-		String csvFile = "developer.csv";
-		FileWriter writer;
-		try {
-			writer = new FileWriter(csvFile);
-			CSVUtils.writeLine(writer, resultList, '|', '\"');
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-
 		SearchText resultSearchText = new SearchText();
 		resultSearchText.setSearchText(resultList);
-		return resultSearchText;
+		//return resultSearchText;
+		return sb.toString();
 	}
 }

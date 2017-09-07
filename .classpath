@@ -15,5 +15,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/priya/Downloads/apache-tomcat-7.0.81-windows-x64/apache-tomcat-7.0.81/lib/servlet-api.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/mockito-all-1.10.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/jackson-databind-2.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/org.springframework.test-3.0.5.RELEASE.jar/org.springframework.test-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/rest-assured-2.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/priya/Downloads/groovy-all-2.4.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -32,12 +32,16 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software 
 
 Eclipse - IDE - http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/indigosr2
+
 JAVA JDK 1.8 -
 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 Spring Dev Jars -
 https://mvnrepository.com/tags/spring
+
 Tomcat Application server 7-
 https://tomcat.apache.org/
+
 Curl -
 https://curl.haxx.se/download.html
 
@@ -124,7 +128,7 @@ The result is :
 
 ## Author
 
-* **Priya** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Priya** - *Initial work*
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
